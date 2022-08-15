@@ -1,5 +1,5 @@
 import ExpenseItem from './components/ExpenseItem';
-//Harishkumar
+//Harishkumar J
 function App() {
 	const expenses = [
 		{
