@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import './ExpenseForm.css';
 
-const ExpenseForm = () => {
+//below props is added to access the onSaveExpDetails prop from the NewExpense.js
+const ExpenseForm = (props) => {
 	const [userInput, setUserInput] = useState({
 		title: '',
 		amount: '',
@@ -34,12 +35,15 @@ const ExpenseForm = () => {
 
 	const submitHandler = (e) => {
 		e.preventDefault();
+		//on submit is browser default function ,
+		//so on submiting the entire page reload .to prevent is preventDefault() method is used
 		const expenseDetails = {
 			title: userInput.title,
 			amount: userInput.amount,
 			date: new Date(userInput.date),
 		};
-		console.log(expenseDetails);
+		// console.log(expenseDetails);
+		props.onSaveExpenseDetails(expenseDetails);
 		//two-way binding (after submitting the form, we clear the form fields)
 		setUserInput({
 			title: '',
