@@ -1,7 +1,17 @@
 import './NewExpense.css';
 import ExpenseForm from './ExpenseForm';
+import { useState } from 'react';
 
 const NewExpense = (props) => {
+	const [expenseForm, setExpenseForm] = useState(false);
+
+	const openExpenseFormHandler = () => {
+		setExpenseForm(!expenseForm);
+	};
+
+	const toggleExpenseForm = () => {
+		setExpenseForm(!expenseForm);
+	};
 	const saveExpenseDetailsHandler = (expenseData) => {
 		const expenseDetails = {
 			...expenseData,
@@ -13,8 +23,17 @@ const NewExpense = (props) => {
 	};
 	return (
 		<div className='new-expense'>
-			{/* //onSaveExpenseDetails is a child to parents passing the props */}
-			<ExpenseForm onSaveExpenseDetails={saveExpenseDetailsHandler} />
+			{!expenseForm && (
+				<button onClick={openExpenseFormHandler}>Add Your Expense</button>
+			)}
+
+			{expenseForm && (
+				<ExpenseForm
+					//onSaveExpenseDetails is a child to parents passing the props
+					onSaveExpenseDetails={saveExpenseDetailsHandler}
+					onCancelExpenseForm={toggleExpenseForm}
+				/>
+			)}
 		</div>
 	);
 };
