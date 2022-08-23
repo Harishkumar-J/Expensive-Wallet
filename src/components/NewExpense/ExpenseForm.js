@@ -39,7 +39,7 @@ const ExpenseForm = (props) => {
 		//so on submiting the entire page reload .to prevent is preventDefault() method is used
 		const expenseDetails = {
 			title: userInput.title,
-			amount: userInput.amount,
+			amount: +userInput.amount, //number(type) conversion
 			date: new Date(userInput.date),
 		};
 		// console.log(expenseDetails);
